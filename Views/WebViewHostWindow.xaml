@@ -1,0 +1,70 @@
+<Window x:Class="GeminiUsageMonitor.Views.WebViewHostWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Монітор лімітів Gemini — Акаунт та сторінка лімітів"
+        Width="1020"
+        Height="740"
+        ShowInTaskbar="False"
+        Background="#131314"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхня панель стану та керування -->
+        <Border Grid.Row="0"
+                Background="#1E1F22"
+                BorderBrush="#33FFFFFF"
+                BorderThickness="0,0,0,1"
+                Padding="14,10">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button x:Name="TestScrapeButton"
+                            Content="🔄 Зчитати ліміти зараз"
+                            Click="OnTestScrapeClick"
+                            Padding="12,6"
+                            Margin="0,0,8,0"
+                            Background="#2B579A"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            FontFamily="Segoe UI"
+                            FontSize="12.5"
+                            FontWeight="SemiBold"/>
+                    <Button x:Name="HideToTrayButton"
+                            Content="Сховати у фон (Трей)"
+                            Click="OnHideToTrayClick"
+                            Padding="12,6"
+                            Background="#303134"
+                            Foreground="#E8EAED"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            FontFamily="Segoe UI"
+                            FontSize="12.5"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Center" Margin="0,0,12,0">
+                    <TextBlock x:Name="HeaderStatusText"
+                               Text="Ініціалізація WebView2..."
+                               Foreground="#E8EAED"
+                               FontFamily="Segoe UI"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               TextTrimming="CharacterEllipsis"/>
+                    <TextBlock Text="Увійдіть у свій Google-акаунт один раз. Надалі це вікно працюватиме приховано у фоні."
+                               Foreground="#9AA0A6"
+                               FontFamily="Segoe UI"
+                               FontSize="11.5"
+                               Margin="0,2,0,0"
+                               TextTrimming="CharacterEllipsis"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Системний Edge WebView2 -->
+        <wv2:WebView2 x:Name="Browser" Grid.Row="1" DefaultBackgroundColor="#131314"/>
+    </Grid>
+</Window>

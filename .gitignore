@@ -1,0 +1,9 @@
+bin/
+obj/
+publish/
+publish_next/
+*.old
+*.zip
+Запустити_монітор.bat
+.vs/
+*.user
